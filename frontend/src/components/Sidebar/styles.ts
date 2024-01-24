@@ -9,4 +9,41 @@ export const Container = styled.aside`
   align-items: center;
   padding: 2rem 0;
   overflow: hidden;
+
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+`
+
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+`
+
+export const Menu = styled.ul`
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+`
+
+export const MenuItem = styled.li`
+  a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  a img {
+    width: 75%;
+    fill: white;
+  }
 `
