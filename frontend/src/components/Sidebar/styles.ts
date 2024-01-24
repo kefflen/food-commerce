@@ -1,7 +1,8 @@
-import styled from "styled-components"
-//The sidebar should have a background color darker that the background color of vite template
-export const Container = styled.aside`
-  width: 7.75rem;
+import styled, { css } from "styled-components"
+type ContainerProps = {
+  isExpanded: boolean
+}
+export const Container = styled.aside<ContainerProps>`
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.red};
   display: flex;
@@ -9,6 +10,22 @@ export const Container = styled.aside`
   align-items: center;
   padding: 2rem 0;
   overflow: hidden;
+  transition: width 0.3s ease-in-out;
+
+  ${({ isExpanded }) => {
+    return isExpanded? css`
+      width: 16.3rem;
+      ${MenuItem} a {
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0 .5rem;
+        justify-content: flex-start;
+        width: 100%;
+      }
+    ` : css`
+      width: 7.5rem;
+    `
+  }}
 
   button {
     background: none;
@@ -23,6 +40,7 @@ export const Nav = styled.nav`
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
+  width: 100%;
 `
 
 export const Menu = styled.ul`
@@ -32,10 +50,20 @@ export const Menu = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-
+  width: 100%;
 `
 
 export const MenuItem = styled.li`
+  width: 100%;
+  &.active {
+    width: 100%;
+    border-left: 0.5rem solid ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.yellow};
+    svg {
+      fill: ${({ theme }) => theme.colors.yellow};
+    }
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -43,7 +71,7 @@ export const MenuItem = styled.li`
   }
 
   a svg {
-    width: 50%;
+    width: 5rem;
     fill: ${({ theme }) => theme.colors.white};
   }
 `
