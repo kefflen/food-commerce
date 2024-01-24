@@ -42,8 +42,8 @@ export const MenuItem = styled.li`
     flex-direction: column;
   }
 
-  a img {
-    width: 75%;
-    fill: white;
+  a svg {
+    width: 50%;
+    fill: ${({ theme }) => theme.colors.white};
   }
 `
